@@ -1,5 +1,7 @@
 <template>
-
+  <AppBar />
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import AppBar from '@/components/AppBar.vue'
+</script>

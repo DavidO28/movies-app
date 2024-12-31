@@ -1,6 +1,6 @@
 <template>
   <v-text-field
-    style="width: 2px"
+    style="width: 225px"
     density="compact"
     placeholder="Search"
     variant="solo"

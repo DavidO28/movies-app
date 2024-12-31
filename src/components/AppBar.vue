@@ -68,7 +68,7 @@
 
   const menuItems: MenuItem[] = [
     { title: 'Home', path: '/', icon: 'mdi-home' },
-    { title: 'Genres', path: '/genres', icon: 'mdi-film' },
+    { title: 'Genre', path: '/genre', icon: 'mdi-film' },
     { title: 'Country', path: '/country', icon: 'mdi-flag' },
     { title: 'Movies', path: '/movies', icon: 'mdi-flag' },
     { title: 'TV-series', path: '/series', icon: 'mdi-flag' },

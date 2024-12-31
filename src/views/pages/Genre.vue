@@ -1,0 +1,3 @@
+<template>
+    Genres page
+</template>

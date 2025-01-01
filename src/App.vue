@@ -4,11 +4,9 @@
       <AppBar />
     </nav>
   </header>
-  <section>
-    <main>
-      <Home />
-    </main>
-  </section>
+  <main>
+    <Home />
+  </main>
 </template>
 
 <script setup lang="ts">

@@ -1,5 +1,4 @@
 <template>
-  <v-app>
     <v-navigation-drawer
       class="hidden-md-and-up"
       v-model="sidebar"
@@ -23,9 +22,9 @@
     </v-navigation-drawer>
 
     <v-toolbar>
-      <v-toolbar-title>
+      <v-toolbar-title class="mt-2">
         <router-link to="/">
-          {{ appTitle }}
+          <img src="../assets/movies.png" alt="movies logo" width="100px" height="30px">
         </router-link>
       </v-toolbar-title>
 
@@ -46,14 +45,12 @@
         <v-icon @click="toggleSidebar">mdi-menu</v-icon>
       </span>
     </v-toolbar>
-  </v-app>
 </template>
 
 <script setup lang="ts">
   import { ref } from 'vue'
   import Search from './Search.vue'
 
-  const appTitle = 'Movies App'
   const sidebar = ref(false)
 
   interface MenuItem {

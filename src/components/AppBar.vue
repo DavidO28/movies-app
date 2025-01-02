@@ -41,7 +41,7 @@
         </v-btn>
       </v-toolbar-items>
 
-      <span class="hidden-md-and-up me-3">
+      <span class="hidden-md-and-up me-5">
         <v-icon @click="toggleSidebar">mdi-menu</v-icon>
       </span>
     </v-toolbar>

@@ -54,7 +54,7 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, onMounted } from 'vue'
+  import { ref } from 'vue'
   import Search from './Search.vue'
 
   const appTitle = 'Movies App'
@@ -70,21 +70,10 @@
     { title: 'Home', path: '/', icon: 'mdi-home' },
     { title: 'Genre', path: '/genre', icon: 'mdi-film' },
     { title: 'Country', path: '/country', icon: 'mdi-flag' },
-    { title: 'Movies', path: '/movies', icon: 'mdi-flag' },
-    { title: 'TV-series', path: '/series', icon: 'mdi-flag' },
-    { title: 'Top IMDB', path: '/top-imdb', icon: 'mdi-flag' },
+    { title: 'Movies', path: '/movies', icon: 'mdi-video' },
+    { title: 'TV-series', path: '/series', icon: 'mdi-movie-roll' },
+    { title: 'Top IMDB', path: '/top-imdb', icon: 'mdi-movie-star' },
   ]
-
-  const isMobile = ref(false)
-
-  const checkMobile = () => {
-    isMobile.value = window.innerWidth < 1024
-  }
-
-  onMounted(() => {
-    checkMobile()
-    window.addEventListener('resize', checkMobile)
-  })
 
   const toggleSidebar = () => {
     sidebar.value = !sidebar.value

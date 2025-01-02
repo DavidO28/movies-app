@@ -30,7 +30,7 @@
       </v-toolbar-title>
 
       <v-toolbar-items class="hidden-sm-and-down">
-        <Search />
+        <Search class="me-3" />
         <v-btn
           flat
           v-for="item in menuItems"
@@ -42,14 +42,10 @@
         </v-btn>
       </v-toolbar-items>
 
-      <span class="hidden-md-and-up">
+      <span class="hidden-md-and-up me-3">
         <v-icon @click="toggleSidebar">mdi-menu</v-icon>
       </span>
     </v-toolbar>
-
-    <v-main>
-      <router-view></router-view>
-    </v-main>
   </v-app>
 </template>
 

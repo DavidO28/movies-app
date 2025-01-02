@@ -4,12 +4,11 @@
       <AppBar />
     </nav>
   </header>
-  <main>
-    <Home />
-  </main>
+  <v-main>
+      <router-view></router-view>
+    </v-main>
 </template>
 
 <script setup lang="ts">
   import AppBar from './components/AppBar.vue'
-  import Home from './views/Home.vue'
 </script>

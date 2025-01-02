@@ -1,5 +1,5 @@
 <template>
-  <v-text-field
+  <v-text-field class="mt-3"
     style="width: 225px"
     density="compact"
     placeholder="Search"

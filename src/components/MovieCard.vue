@@ -16,7 +16,6 @@
 
 <style scoped>
   .movie-card {
-    max-width: 300px;
     border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;

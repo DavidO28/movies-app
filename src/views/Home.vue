@@ -1,5 +1,5 @@
 <template>
-    <v-row justify="center" class="mt-3">
+    <v-row justify="center">
       <v-col
         v-for="n in 10"
         :key="n"

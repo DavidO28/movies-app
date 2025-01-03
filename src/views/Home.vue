@@ -1,16 +1,28 @@
 <template>
-  <CardLayout :list-data="listData" />
+  <v-progress-circular
+    v-if="loading"
+    color="primary"
+    indeterminate
+  />
+  <CardLayout
+    v-else
+    :list-data="listData"
+  />
 </template>
 
 <script setup lang="ts">
   import { ref, onMounted } from 'vue'
   import CardLayout from '@/layouts/CardLayout.vue'
 
-  const url = 'https://api.themoviedb.org/3/movie/popular?api_key=f27d25a2740059f40ae2fe3147268323&language=en-US'
+  const url =
+    'https://api.themoviedb.org/3/movie/popular?api_key=f27d25a2740059f40ae2fe3147268323&language=en-US'
+
   const listData = ref([])
+  const loading = ref(false)
 
   const getMovies = async () => {
     try {
+      loading.value = true
       const response = await fetch(url, {
         headers: {
           Authorization:
@@ -20,6 +32,7 @@
       })
       const data = await response.json()
       listData.value = data.results
+      loading.value = false
     } catch (error) {
       console.error(error)
     }

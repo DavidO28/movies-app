@@ -1,23 +1,22 @@
 <template>
-  <div class="movie-card">
+  <v-card class="movie-card">
     <img
-      src="../assets/moviess.png"
+      src="../assets/gladiator.jpg"
       alt="movie title"
       class="movie-image"
     />
-    <div class="movie-info">
-      <h3 class="movie-title">title</h3>
-      <p class="movie-description">description</p>
+    <div class="pa-2">
+      <h3 class="movie-title">
+        titlessssssssssssssssssssssssssssssssssssssssssssss
+      </h3>
     </div>
-  </div>
+  </v-card>
 </template>
 
 <script setup lang="ts"></script>
 
 <style scoped>
   .movie-card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -32,22 +31,13 @@
 
   .movie-image {
     width: 100%;
-    height: 200px;
+    height: 250px;
     object-fit: cover;
   }
 
-  .movie-info {
-    padding: 15px;
-  }
-
   .movie-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-
-  .movie-description {
-    font-size: 14px;
-    color: #555;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
   }
 </style>

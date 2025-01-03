@@ -1,19 +1,26 @@
 <template>
   <v-card class="movie-card">
     <img
-      src="../assets/gladiator.jpg"
-      alt="movie title"
+      :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"
+      :alt="movie.title"
       class="movie-image"
     />
     <div class="pa-2">
-      <h3 class="movie-title">
-        titlessssssssssssssssssssssssssssssssssssssssssssss
-      </h3>
+      <h3 class="movie-title">{{ movie.title }}</h3>
     </div>
   </v-card>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import { defineProps } from 'vue'
+
+  defineProps({
+    movie: {
+      type: Object,
+      required: true,
+    },
+  })
+</script>
 
 <style scoped>
   .movie-card {

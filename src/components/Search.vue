@@ -1,6 +1,7 @@
 <template>
-  <v-text-field class="mt-3"
-    style="width: 225px"
+  <v-text-field
+    class="mt-3"
+    style="width: 210px"
     density="compact"
     placeholder="Search"
     variant="solo"
@@ -22,3 +23,10 @@
     console.log('test')
   }
 </script>
+
+<style scoped>
+  i:hover {
+    color: green;
+    transform: scale(1.3);
+  }
+</style>

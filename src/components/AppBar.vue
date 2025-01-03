@@ -18,6 +18,15 @@
 
         {{ item.title }}
       </v-list-item>
+      <v-list-item>
+        <v-btn
+          class="ma-3"
+          :icon="
+            currentTheme === 'light' ? 'mdi-weather-night' : 'mdi-weather-sunny'
+          "
+          @click="toggleTheme"
+        />
+      </v-list-item>
     </v-list>
   </v-navigation-drawer>
 
@@ -45,6 +54,15 @@
         <v-icon left>{{ item.icon }}</v-icon>
         {{ item.title }}
       </v-btn>
+
+        <v-btn
+          class="pa-2"
+          :icon="
+            currentTheme === 'light' ? 'mdi-weather-night' : 'mdi-weather-sunny'
+          "
+          @click="toggleTheme"
+        />
+
     </v-toolbar-items>
 
     <span class="hidden-md-and-up me-5">
@@ -56,6 +74,15 @@
 <script setup lang="ts">
   import { ref } from 'vue'
   import Search from './Search.vue'
+
+  const props = defineProps({
+    currentTheme: {
+      type: String,
+      required: true,
+    },
+  })
+
+  const emit = defineEmits(['update:theme'])
 
   const sidebar = ref(false)
 
@@ -76,5 +103,10 @@
 
   const toggleSidebar = () => {
     sidebar.value = !sidebar.value
+  }
+
+  const toggleTheme = () => {
+    const newTheme = props.currentTheme === 'light' ? 'dark' : 'light'
+    emit('update:theme', newTheme)
   }
 </script>

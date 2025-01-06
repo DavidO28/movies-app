@@ -18,7 +18,7 @@
         <div class="d-flex fill-height justify-center align-center px-3">
           <img
             :src="`https://image.tmdb.org/t/p/w500${item.poster_path}`"
-            class="movie-image w-100 h-100"
+            class="w-100 h-100"
             :alt="item.title"
           />
           <div

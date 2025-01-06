@@ -6,7 +6,7 @@
   />
   <div v-else>
     <Slider />
-    <v-divider><h2 class="mt-7 mb-3">Popular movies</h2></v-divider>
+    <h2 class="mt-10 mb-3 text-center">Popular movies</h2>
     <CardLayout :list-data="listData" />
   </div>
 </template>

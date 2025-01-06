@@ -3,7 +3,7 @@
     <img
       :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"
       :alt="movie.title"
-      class="movie-image"
+      class="w-100 h-100"
     />
     <div class="pa-2">
       <h3 class="movie-title">{{ movie.title }}</h3>
@@ -34,13 +34,7 @@
   .movie-card:hover {
     transform: scale(1.05);
     cursor: pointer;
-  }
-
-  .movie-image {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-  }
+  } 
 
   .movie-title {
     text-overflow: ellipsis;

@@ -16,12 +16,8 @@
 <script setup lang="ts">
   import { defineProps } from 'vue'
   import Card from '@/components/Card.vue'
+  import type { Movie } from '@/types'
 
-  interface Movie {
-    id: number
-    title: string
-    poster_path: string
-  }
   defineProps<{
     listData: Movie[]
   }>()

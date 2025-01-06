@@ -32,11 +32,12 @@
 
 <script setup lang="ts">
   import { ref, onMounted } from 'vue'
+  import type { Movie } from '@/types'
 
+  const currentSlide = ref(0)
   const url = 'https://api.themoviedb.org/3/movie/upcoming'
 
-  const listData = ref([])
-  const currentSlide = ref(0)
+  const listData = ref<Movie[]>([])
   const getMovies = async () => {
     try {
       const response = await fetch(url, {
@@ -55,8 +56,6 @@
 
   onMounted(() => {
     getMovies()
-    
-    console.log(listData, 'slider')
   })
 </script>
 

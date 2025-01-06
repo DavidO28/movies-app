@@ -1,29 +1,39 @@
 <template>
-  <v-progress-circular
-    v-if="loading"
-    color="primary"
-    indeterminate
-  />
-  <div v-else>
-    <Slider />
-    <v-divider><h2 class="mt-7 mb-3">Popular movies</h2></v-divider>
-    <CardLayout :list-data="listData" />
-  </div>
+  <v-divider><h2 class="mb-3">Upcoming movies</h2></v-divider>
+  <v-window
+    v-model="window"
+    show-arrows
+  >
+    <v-window-item
+      v-for="item in listData"
+      :key="item"
+    >
+      <v-card
+        class="d-flex justify-center align-center"
+        height="400"
+      >
+        <img
+          :src="`https://image.tmdb.org/t/p/w500${item.poster_path}`"
+          class="movie-image w-100 h-100"
+          :alt="item.title"
+        />
+      </v-card>
+    </v-window-item>
+  </v-window>
 </template>
 
 <script setup lang="ts">
   import { ref, onMounted } from 'vue'
-  import CardLayout from '@/layouts/CardLayout.vue'
-  import Slider from '@/components/Slider.vue'
 
-  const url = 'https://api.themoviedb.org/3/movie/popular'
+  const window = ref(0)
+  const length = 5
+
+  const url = 'https://api.themoviedb.org/3/movie/upcoming'
 
   const listData = ref([])
-  const loading = ref(false)
 
   const getMovies = async () => {
     try {
-      loading.value = true
       const response = await fetch(url, {
         headers: {
           Authorization:
@@ -33,7 +43,6 @@
       })
       const data = await response.json()
       listData.value = data.results
-      loading.value = false
     } catch (error) {
       console.error(error)
     }
@@ -41,5 +50,12 @@
 
   onMounted(() => {
     getMovies()
+    console.log(listData, 'slider')
   })
 </script>
+
+<style scoped>
+  img {
+    object-fit: contain;
+  }
+</style>

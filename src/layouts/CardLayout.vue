@@ -8,14 +8,14 @@
       lg="3"
       xl="2"
     >
-      <MovieCard :movie="item" />
+      <Card :movie="item" />
     </v-col>
   </v-row>
 </template>
 
 <script setup lang="ts">
   import { defineProps } from 'vue'
-  import MovieCard from '@/components/MovieCard.vue'
+  import Card from '@/components/Card.vue'
 
   interface Movie {
     id: number

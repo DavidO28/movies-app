@@ -9,7 +9,7 @@
       </nav>
     </header>
     <v-main :theme="theme">
-      <v-container class="mt-5">
+      <v-container>
         <router-view></router-view>
       </v-container>
     </v-main>

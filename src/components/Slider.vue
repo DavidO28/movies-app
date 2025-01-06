@@ -11,19 +11,26 @@
       v-for="(item, i) in listData"
       :key="i"
     >
-      <v-sheet height="100%">
-        <div class="d-flex fill-height justify-center align-center">
-          <span>
-            {{ item.title }}
-          </span>
+      <v-sheet
+        height="100%"
+        class="px-15"
+      >
+        <div class="d-flex fill-height justify-center align-center px-3">
           <img
             :src="`https://image.tmdb.org/t/p/w500${item.poster_path}`"
             class="movie-image w-100 h-100"
             :alt="item.title"
           />
-          <span>{{ item.release_date }}</span>
-          <span>{{ item.total_average }}</span>
-          <span>{{ item.overview }}</span>
+          <div
+            class="d-none d-md-flex flex-column justify-center align-center text-center px-3"
+          >
+            <h3>
+              {{ item.title }}
+            </h3>
+            <h4>{{ item.release_date }}</h4>
+            <h5>Rating: {{ item.vote_average }}</h5>
+            <span>{{ item.overview }}</span>
+          </div>
         </div>
       </v-sheet>
     </v-carousel-item>
@@ -56,6 +63,7 @@
 
   onMounted(() => {
     getMovies()
+    console.log(listData)
   })
 </script>
 

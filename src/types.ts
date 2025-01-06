@@ -4,5 +4,5 @@ export type Movie = {
   overview: string
   poster_path: string
   release_date: string
-  total_average: number
+  vote_average: number
 }

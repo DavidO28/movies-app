@@ -1,5 +1,5 @@
 <template>
-  <h2 class="mb-3 text-center">Upcoming movies</h2>
+  <h2 class="mb-3 text-center">Popular movies</h2>
   <v-carousel
     class="mt-3 pt-3"
     height="400"
@@ -38,33 +38,12 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, onMounted } from 'vue'
-  import type { Movie } from '@/types'
+  import { ref } from 'vue'
+  import { useFetch } from '@/composables/useFetch'
 
   const currentSlide = ref(0)
-  const url = 'https://api.themoviedb.org/3/movie/upcoming'
 
-  const listData = ref<Movie[]>([])
-  const getMovies = async () => {
-    try {
-      const response = await fetch(url, {
-        headers: {
-          Authorization:
-            'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmMjdkMjVhMjc0MDA1OWY0MGFlMmZlMzE0NzI2ODMyMyIsIm5iZiI6MTczNTg5NzcyMy43NDgsInN1YiI6IjY3NzdiMjdiODE2YjI4MTBkMTY2ODgzMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.FLRkmRV9YMlOp7FLzoMVgG_ebEqKNbLHXocNhXNjJFw',
-          Accept: 'application/json',
-        },
-      })
-      const data = await response.json()
-      listData.value = data.results
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
-  onMounted(() => {
-    getMovies()
-    console.log(listData)
-  })
+  const { listData } = useFetch('https://api.themoviedb.org/3/movie/upcoming')
 </script>
 
 <style scoped>

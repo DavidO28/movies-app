@@ -6,7 +6,9 @@
       class="w-100 h-100"
     />
     <div class="pa-2">
-      <h3 class="movie-title">{{ movie.title }}</h3>
+      <h3 class="movie-title">
+        {{ movie.title === undefined ? movie.name : movie.title }}
+      </h3>
     </div>
   </v-card>
 </template>
@@ -34,7 +36,7 @@
   .movie-card:hover {
     transform: scale(1.05);
     cursor: pointer;
-  } 
+  }
 
   .movie-title {
     text-overflow: ellipsis;

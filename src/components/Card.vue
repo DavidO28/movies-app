@@ -8,7 +8,12 @@
       />
     </template>
     <template v-else>
-      <v-icon>mdi-image</v-icon>
+      <div
+        class="d-flex justify-center align-center"
+        style="height: 100%"
+      >
+        <v-icon size="xxx-large">mdi-image-off</v-icon>
+      </div>
     </template>
 
     <v-card-title class="movie-title">

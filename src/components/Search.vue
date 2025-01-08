@@ -7,11 +7,12 @@
     variant="solo"
     rounded
     clearable
-    type="text"
+    v-model="searchStore.searchQuery"
+    @keydown.enter="searchStore.performSearch"
   >
     <v-icon
       class="me-3"
-      @click="type"
+      @click="searchStore.performSearch"
     >
       mdi-magnify
     </v-icon>
@@ -19,9 +20,9 @@
 </template>
 
 <script setup lang="ts">
-  const type = () => {
-    console.log('test')
-  }
+  import { useSearchStore } from '@/store/search'
+
+  const searchStore = useSearchStore()
 </script>
 
 <style scoped>

@@ -10,7 +10,10 @@
     </header>
     <v-main :theme="theme">
       <v-container>
-        <router-view></router-view>
+        <div v-if="searchStore.searchQuery.trim()">
+          <CardLayout :list-data="searchResults" />
+        </div>
+        <router-view v-else></router-view>
       </v-container>
     </v-main>
     <footer>this is footer</footer>
@@ -18,9 +21,14 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, onMounted } from 'vue'
+  import { ref, onMounted, computed } from 'vue'
   import { useTheme } from 'vuetify'
   import AppBar from './components/AppBar.vue'
+  import CardLayout from './layouts/CardLayout.vue'
+  import { useSearchStore } from '@/store/search'
+  import { useFetch } from '@/composables/useFetch'
+
+  const searchStore = useSearchStore()
 
   const currentTheme = ref('light')
 
@@ -43,4 +51,12 @@
       theme.global.name.value = 'light'
     }
   })
+
+  const { listData: searchResults } = useFetch(
+    computed(() => {
+      return searchStore.searchQuery.trim()
+        ? `https://api.themoviedb.org/3/search/multi?include_adult=false&language=en-US&query=${searchStore.searchQuery.trim()}`
+        : ''
+    }),
+  )
 </script>

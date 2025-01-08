@@ -10,7 +10,7 @@
     </header>
     <v-main :theme="theme">
       <v-container>
-        <div v-if="searchStore.searchQuery.trim()">
+        <div v-if="searchStore.searchQuery">
           <CardLayout :list-data="searchResults" />
         </div>
         <router-view v-else></router-view>
@@ -54,8 +54,8 @@
 
   const { listData: searchResults } = useFetch(
     computed(() => {
-      return searchStore.searchQuery.trim()
-        ? `https://api.themoviedb.org/3/search/multi?include_adult=false&language=en-US&query=${searchStore.searchQuery.trim()}`
+      return searchStore.searchQuery
+        ? `https://api.themoviedb.org/3/search/multi?include_adult=false&language=en-US&query=${searchStore.searchQuery}`
         : ''
     }),
   )

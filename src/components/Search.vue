@@ -12,7 +12,6 @@
   >
     <v-icon
       class="me-3"
-      @click="searchStore.performSearch"
     >
       mdi-magnify
     </v-icon>
@@ -24,10 +23,3 @@
 
   const searchStore = useSearchStore()
 </script>
-
-<style scoped>
-  i:hover {
-    color: green;
-    transform: scale(1.3);
-  }
-</style>

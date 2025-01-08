@@ -11,7 +11,7 @@ export function useFetch(url: string | Ref<string>) {
   const getData = async () => {
     loading.value = true
     try {
-      const response = await fetch(reactiveUrl.value as string, {
+      const response = await fetch(reactiveUrl.value, {
         headers: {
           Authorization:
             'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmMjdkMjVhMjc0MDA1OWY0MGFlMmZlMzE0NzI2ODMyMyIsIm5iZiI6MTczNTg5NzcyMy43NDgsInN1YiI6IjY3NzdiMjdiODE2YjI4MTBkMTY2ODgzMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.FLRkmRV9YMlOp7FLzoMVgG_ebEqKNbLHXocNhXNjJFw',
@@ -32,6 +32,10 @@ export function useFetch(url: string | Ref<string>) {
   }
 
   watch(reactiveUrl, getData, { immediate: true })
-
-  return { listData, loading, error, setUrl: (newUrl: string) => reactiveUrl.value = newUrl }
+  return {
+    listData,
+    loading,
+    error,
+    setUrl: (newUrl: string) => (reactiveUrl.value = newUrl),
+  }
 }

@@ -2,6 +2,7 @@
   <v-row justify="center">
     <v-col
       v-for="item in listData"
+      :key="item.id"
       cols="12"
       sm="6"
       md="4"

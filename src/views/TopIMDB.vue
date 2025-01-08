@@ -19,8 +19,7 @@
       <v-tab :value="1">Series</v-tab>
     </v-tabs>
 
-    <v-card-text>
-      <v-tabs-window v-model="tab">
+      <v-tabs-window v-model="tab" class="px-5 py-7">
         <v-tabs-window-item :value="0">
           <CardLayout :list-data="listData" />
         </v-tabs-window-item>
@@ -28,7 +27,7 @@
           <CardLayout :list-data="listData" />
         </v-tabs-window-item>
       </v-tabs-window>
-    </v-card-text>
+
   </div>
 </template>
 

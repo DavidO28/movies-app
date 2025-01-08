@@ -1,5 +1,5 @@
 <template>
-  <v-row justify="center">
+  <v-row justify="center" >
     <v-col
       v-for="item in listData"
       :key="item.id"

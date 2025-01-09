@@ -4,6 +4,7 @@ import type { Movie } from '@/types'
 
 export function useFetch(url: string | Ref<string>) {
   const listData = ref<Movie[]>([])
+  const item = ref<Movie | null>(null)
   const loading = ref(false)
   const error = ref<string | null>(null)
   const reactiveUrl = ref(url)
@@ -23,6 +24,7 @@ export function useFetch(url: string | Ref<string>) {
       }
       const data = await response.json()
       listData.value = data.results
+      item.value = data 
     } catch (err) {
       error.value =
         err instanceof Error ? err.message : 'An unknown error occurred'
@@ -34,6 +36,7 @@ export function useFetch(url: string | Ref<string>) {
   watch(reactiveUrl, getData, { immediate: true })
   return {
     listData,
+    item,
     loading,
     error,
     setUrl: (newUrl: string) => (reactiveUrl.value = newUrl),

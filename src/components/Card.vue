@@ -46,7 +46,10 @@
   const openContent = () => {
     router.push({
       name: 'content',
-      params: { id: `${props.movie.title ? 'movie' : 'tv'}-${props.movie.id}` },
+      params: {
+        type: `${props.movie.title ? 'movie' : 'tv'}`,
+        id: `${props.movie.id}`,
+      },
     })
   }
 </script>

@@ -40,7 +40,7 @@ const router = createRouter({
         import(/* webpackChunkName: "top-imdb page" */ '@/views/TopIMDB.vue'),
     },
     {
-      path: '/content/:id',
+      path: '/:type/:id',
       name: 'content',
       component: () =>
         import(

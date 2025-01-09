@@ -10,6 +10,8 @@
     <v-carousel-item
       v-for="(item, i) in listData"
       :key="i"
+      @click="openContent(item)"
+      class="carousel-item"
     >
       <v-sheet
         height="100%"
@@ -40,14 +42,31 @@
 <script setup lang="ts">
   import { ref } from 'vue'
   import { useFetch } from '@/composables/useFetch'
+  import { useRouter } from 'vue-router'
+  import type { Movie } from '@/types'
+
+  const router = useRouter()
 
   const currentSlide = ref(0)
 
   const { listData } = useFetch('https://api.themoviedb.org/3/movie/upcoming')
+
+  const openContent = (item: Movie) => {
+    router.push({
+      name: 'content',
+      params: {
+        id: `${item.title ? 'movie' : 'tv'}-${item.id}`,
+      },
+    })
+  }
 </script>
 
 <style scoped>
   img {
     object-fit: contain;
+  }
+
+  .carousel-item:hover {
+    cursor: pointer;
   }
 </style>

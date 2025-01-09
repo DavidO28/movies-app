@@ -1,36 +1,54 @@
 <template>
-  <v-card class="movie-card">
-    <template v-if="movie.poster_path && movie.poster_path !== 'null'">
-      <img
-        :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"
-        :alt="movie.title"
-        class="movie-image"
-      />
-    </template>
-    <template v-else>
-      <div
-        class="d-flex justify-center align-center"
-        style="height: 100%"
-      >
-        <v-icon size="xxx-large">mdi-image-off</v-icon>
-      </div>
-    </template>
+  <v-card
+    class="movie-card"
+    @click="openContent"
+  >
+    <img
+      v-if="hasPoster"
+      :src="posterUrl"
+      :alt="movieTitle"
+      class="movie-image"
+    />
+    <div
+      v-else
+      class="no-poster"
+    >
+      <v-icon size="xxx-large">mdi-image-off</v-icon>
+    </div>
 
     <v-card-title class="movie-title">
-      {{ movie.title === undefined ? movie.name : movie.title }}
+      {{ movieTitle }}
     </v-card-title>
   </v-card>
 </template>
 
 <script setup lang="ts">
-  import { defineProps } from 'vue'
+  import { defineProps, computed } from 'vue'
+  import { useRouter } from 'vue-router'
 
-  defineProps({
+  const props = defineProps({
     movie: {
       type: Object,
       required: true,
     },
   })
+
+  const router = useRouter()
+
+  const movieTitle = computed(() => props.movie.title || props.movie.name)
+  const hasPoster = computed(
+    () => props.movie.poster_path && props.movie.poster_path !== 'null',
+  )
+  const posterUrl = computed(
+    () => `https://image.tmdb.org/t/p/w500${props.movie.poster_path}`,
+  )
+
+  const openContent = () => {
+    router.push({
+      name: 'content',
+      params: { id: `${props.movie.title ? 'movie' : 'tv'}-${props.movie.id}` },
+    })
+  }
 </script>
 
 <style scoped>
@@ -51,6 +69,13 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  .no-poster {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
   }
 
   .movie-title {

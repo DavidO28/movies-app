@@ -30,7 +30,6 @@
               {{ item.title }}
             </h3>
             <h4>{{ item.release_date }}</h4>
-            <h4>{{ item.id }}</h4>
             <h5>Rating: {{ item.vote_average }}</h5>
             <span>{{ item.overview }}</span>
           </div>

@@ -6,3 +6,9 @@ export type Movie = {
   release_date: string
   vote_average: number
 }
+
+export type MenuItem = {
+  title: string
+  path: string
+  icon: string
+}

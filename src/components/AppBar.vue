@@ -55,14 +55,13 @@
         {{ item.title }}
       </v-btn>
 
-        <v-btn
-          class="pa-2"
-          :icon="
-            currentTheme === 'light' ? 'mdi-weather-night' : 'mdi-weather-sunny'
-          "
-          @click="toggleTheme"
-        />
-
+      <v-btn
+        class="pa-2"
+        :icon="
+          currentTheme === 'light' ? 'mdi-weather-night' : 'mdi-weather-sunny'
+        "
+        @click="toggleTheme"
+      />
     </v-toolbar-items>
 
     <span class="hidden-md-and-up me-5">
@@ -74,6 +73,7 @@
 <script setup lang="ts">
   import { ref } from 'vue'
   import Search from './Search.vue'
+  import type { MenuItem } from '@/types'
 
   const props = defineProps({
     currentTheme: {
@@ -85,12 +85,6 @@
   const emit = defineEmits(['update:theme'])
 
   const sidebar = ref(false)
-
-  interface MenuItem {
-    title: string
-    path: string
-    icon: string
-  }
 
   const menuItems: MenuItem[] = [
     { title: 'Home', path: '/', icon: 'mdi-home' },

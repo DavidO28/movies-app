@@ -13,6 +13,7 @@
         :key="item.title"
         :to="item.path"
         router
+        @click="resetSearchQuery"
       >
         <v-icon>{{ item.icon }}</v-icon>
 
@@ -50,6 +51,7 @@
         v-for="item in menuItems"
         :key="item.title"
         :to="item.path"
+        @click="resetSearchQuery"
       >
         <v-icon left>{{ item.icon }}</v-icon>
         {{ item.title }}
@@ -74,6 +76,7 @@
   import { ref } from 'vue'
   import Search from './Search.vue'
   import type { MenuItem } from '@/types'
+  import { useSearchStore } from '@/store/search'
 
   const props = defineProps({
     currentTheme: {
@@ -83,6 +86,8 @@
   })
 
   const emit = defineEmits(['update:theme'])
+
+  const searchStore = useSearchStore()
 
   const sidebar = ref(false)
 
@@ -102,5 +107,9 @@
   const toggleTheme = () => {
     const newTheme = props.currentTheme === 'light' ? 'dark' : 'light'
     emit('update:theme', newTheme)
+  }
+
+  const resetSearchQuery = () => {
+    searchStore.searchQuery = ''
   }
 </script>

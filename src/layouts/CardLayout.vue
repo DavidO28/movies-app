@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, computed } from 'vue'
+  import { ref, computed, watch } from 'vue'
   import Card from '@/components/Card.vue'
   import type { Movie } from '@/types'
 
@@ -47,5 +47,12 @@
     const start = (currentPage.value - 1) * itemsPerPage
     const end = start + itemsPerPage
     return props.listData.slice(start, end)
+  })
+
+  watch(currentPage, () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    })
   })
 </script>

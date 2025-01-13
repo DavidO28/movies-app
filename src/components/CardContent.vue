@@ -1,13 +1,5 @@
 <template>
-  <div
-    v-if="loading"
-    class="w-100 d-flex flex-column justify-center align-center"
-  >
-    <v-progress-circular
-      color="primary"
-      indeterminate
-    />
-  </div>
+  <LoadingStatus v-if="loading" />
   <div
     class="d-flex fill-height justify-center align-center px-3"
     v-else
@@ -38,6 +30,7 @@
   import { useRoute } from 'vue-router'
   import { useFetch } from '@/composables/useFetch'
   import Videos from './Video.vue'
+  import LoadingStatus from './LoadingStatus.vue'
 
   const route = useRoute()
 

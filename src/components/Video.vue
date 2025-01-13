@@ -1,14 +1,6 @@
 <template>
   <div v-if="item && item.results.length > 0">
-    <div
-      v-if="loading"
-      class="w-100 d-flex flex-column justify-center align-center"
-    >
-      <v-progress-circular
-        color="primary"
-        indeterminate
-      />
-    </div>
+    <LoadingStatus v-if="loading" />
     <iframe
       v-else
       class="rounded-xl"
@@ -24,6 +16,7 @@
 
 <script setup lang="ts">
   import { useFetch } from '@/composables/useFetch'
+  import LoadingStatus from './LoadingStatus.vue'
 
   const props = defineProps<{ type: string; id: string }>()
 

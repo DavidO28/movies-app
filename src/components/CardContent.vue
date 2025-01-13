@@ -26,6 +26,10 @@
         <h5>Rating: {{ item.vote_average }}</h5>
         <span>{{ item.overview }}</span>
       </div>
+      <Videos
+        :type="type"
+        :id="id"
+      />
     </div>
   </div>
 </template>
@@ -33,6 +37,7 @@
 <script setup lang="ts">
   import { useRoute } from 'vue-router'
   import { useFetch } from '@/composables/useFetch'
+  import Videos from './Video.vue'
 
   const route = useRoute()
 

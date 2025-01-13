@@ -19,6 +19,9 @@
     <v-card-title class="movie-title">
       {{ movieTitle }}
     </v-card-title>
+    <div class="card-hover no-poster">
+      <v-icon size="xxx-large">mdi-play</v-icon>
+    </div>
   </v-card>
 </template>
 
@@ -56,16 +59,35 @@
 
 <style scoped>
   .movie-card {
+    position: relative;
     display: flex;
     flex-direction: column;
     height: 470px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
     transition: transform 0.3s ease;
   }
+  .card-hover {
+    position: absolute;
+    background-color: black;
+    color: white;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+  }
 
   .movie-card:hover {
     transform: scale(1.025);
     cursor: pointer;
+  }
+
+  .movie-card:hover .card-hover {
+    width: 100%;
+    height: 90%;
+    background-color: rgba(0, 0, 0, 0.5);
   }
 
   .movie-image {

@@ -62,7 +62,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    height: 470px;
+    height: 475px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
     transition: transform 0.3s ease;
   }

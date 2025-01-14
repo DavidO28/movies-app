@@ -11,7 +11,7 @@
       }"
       class="content-container"
     >
-      <div class="content">
+      <div class="content px-3">
         <div>
           <h3>{{ item.title }}</h3>
           <h4>{{ item.release_date }}</h4>

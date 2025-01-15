@@ -73,11 +73,21 @@
         : ''
     }),
   )
+  
+  watch(
+    () => searchStore.searchQuery,
+    (newQuery) => {
+      if (newQuery) {
+        router.push('/')
+      }
+    },
+  )
 
   watch(
     () => route.params,
     () => {
       if (route.params.type && route.params.id) {
+        searchStore.searchQuery = ''
         router.push({
           name: 'content',
           params: {

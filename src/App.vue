@@ -11,6 +11,7 @@
     <v-main :theme="theme">
       <v-container>
         <div v-if="searchStore.searchQuery">
+          <h2 class="text-center mb-3">Seach results</h2>
           <CardLayout :list-data="searchResults" />
         </div>
         <router-view v-else></router-view>

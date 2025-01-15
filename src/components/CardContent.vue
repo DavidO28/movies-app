@@ -1,28 +1,23 @@
 <template>
   <LoadingStatus v-if="loading" />
   <div
-    class="d-flex fill-height justify-center align-center px-3"
-    v-else
+    v-else-if="item"
+    :style="{
+      backgroundImage: `url(https://image.tmdb.org/t/p/w500${item.poster_path})`,
+    }"
+    class="content-container pa-3 py-10 d-flex flex-column justify-center text-center align-center rounded-xl"
   >
-    <div
-      v-if="item"
-      :style="{
-        backgroundImage: `url(https://image.tmdb.org/t/p/w500${item.poster_path})`,
-      }"
-      class="content-container"
-    >
-      <div class="content px-3">
-        <div>
-          <h3>{{ item.title }}</h3>
-          <h4>{{ item.release_date }}</h4>
-          <h5>Rating: {{ item.vote_average }}</h5>
-          <span>{{ item.overview }}</span>
-        </div>
-        <Video
-          :type="type"
-          :id="id"
-        />
-      </div>
+    <div class="font-weight-bold text-container pa-3 rounded-xl">
+      <h2 class="text-truncate">{{ item.title }}</h2>
+      <h4>{{ item.release_date }}</h4>
+      <h5>Rating: {{ item.vote_average }}</h5>
+      <span>{{ item.overview }}</span>
+    </div>
+    <div class="pa-3 video-container">
+      <Video
+        :type="type"
+        :id="id"
+      />
     </div>
   </div>
 </template>
@@ -45,33 +40,19 @@
 
 <style scoped>
   .content-container {
-    position: relative;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    height: 100vh;
-    width: 100vw;
   }
 
-  .content-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-
-  .content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    text-align: center;
-    height: 100vh;
+  .text-container {
+    max-width: 1000px;
     color: white;
-    position: absolute;
-    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  .video-container {
+    width: 100%;
   }
 </style>

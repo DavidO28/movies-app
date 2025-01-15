@@ -1,17 +1,13 @@
 <template>
-  <div v-if="item && item.results.length > 0">
-    <LoadingStatus v-if="loading" />
-    <iframe
-      v-else
-      class="rounded-xl"
-      :src="'https://www.youtube.com/embed/' + item.results[0].key"
-      width="560"
-      height="315"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
-    ></iframe>
-  </div>
+  <LoadingStatus v-if="loading" />
+  <iframe
+    v-else-if="item && item.results.length > 0"
+    class="rounded-xl"
+    :src="'https://www.youtube.com/embed/' + item.results[0].key"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+  ></iframe>
 </template>
 
 <script setup lang="ts">
@@ -24,3 +20,19 @@
     `https://api.themoviedb.org/3/${props.type}/${props.id}/videos`,
   )
 </script>
+
+<style scoped>
+  iframe {
+    width: 100%;
+    max-width: 1000px;
+    height: 70vh;
+  }
+
+  iframe:focus {
+    outline: none;
+  }
+
+  iframe[seamless] {
+    display: block;
+  }
+</style>

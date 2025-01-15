@@ -10,10 +10,21 @@
     </header>
     <v-main :theme="theme">
       <v-container>
-        <div v-if="searchStore.searchQuery">
-          <h2 class="text-center mb-3">Seach results</h2>
+        <div
+          v-if="
+            searchStore.searchQuery && !$route.params.type && !$route.params.id
+          "
+        >
+          <h2 class="text-center mb-3">Search results</h2>
           <CardLayout :list-data="searchResults" />
         </div>
+        <CardContent
+          v-else-if="
+            searchStore.searchQuery && $route.params.type && $route.params.id
+          "
+          :type="$route.params.type"
+          :id="$route.params.id"
+        />
         <router-view v-else></router-view>
       </v-container>
     </v-main>
@@ -22,23 +33,25 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, onMounted, computed } from 'vue'
+  import { ref, onMounted, computed, watch } from 'vue'
   import { useTheme } from 'vuetify'
   import AppBar from './components/AppBar.vue'
   import CardLayout from './layouts/CardLayout.vue'
+  import CardContent from './components/CardContent.vue'
   import { useSearchStore } from '@/store/search'
   import { useFetch } from '@/composables/useFetch'
+  import { useRoute, useRouter } from 'vue-router'
 
   const searchStore = useSearchStore()
+  const router = useRouter()
+  const route = useRoute()
 
   const currentTheme = ref('light')
-
   const theme = useTheme()
 
   const updateTheme = (newTheme: string) => {
     currentTheme.value = newTheme
     theme.global.name.value = newTheme
-    currentTheme.value = newTheme
     localStorage.setItem('theme', newTheme)
   }
 
@@ -59,5 +72,20 @@
         ? `https://api.themoviedb.org/3/search/multi?include_adult=false&language=en-US&query=${searchStore.searchQuery}`
         : ''
     }),
+  )
+
+  watch(
+    () => route.params,
+    () => {
+      if (route.params.type && route.params.id) {
+        router.push({
+          name: 'content',
+          params: {
+            type: route.params.type,
+            id: route.params.id,
+          },
+        })
+      }
+    },
   )
 </script>

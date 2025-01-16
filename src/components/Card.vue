@@ -39,9 +39,7 @@
   const router = useRouter()
 
   const movieTitle = computed(() => props.movie.title || props.movie.name)
-  const hasPoster = computed(
-    () => props.movie.poster_path && props.movie.poster_path !== 'null',
-  )
+  const hasPoster = computed(() => props.movie.poster_path)
   const posterUrl = computed(
     () => `https://image.tmdb.org/t/p/w500${props.movie.poster_path}`,
   )

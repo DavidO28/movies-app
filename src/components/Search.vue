@@ -1,7 +1,7 @@
 <template>
   <v-text-field
     class="mt-3"
-    style="width: 210px"
+    style="min-width: 200px"
     density="compact"
     placeholder="Search"
     variant="solo"

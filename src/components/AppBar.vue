@@ -92,10 +92,7 @@
   const sidebar = ref(false)
 
   const menuItems: MenuItem[] = [
-    { title: 'Home', path: '/', icon: 'mdi-home' },
-    { title: 'Genre', path: '/genre', icon: 'mdi-film' },
-    { title: 'Country', path: '/country', icon: 'mdi-flag' },
-    { title: 'Movies', path: '/movies', icon: 'mdi-video' },
+    { title: 'Movies', path: '/', icon: 'mdi-video' },
     { title: 'TV-series', path: '/series', icon: 'mdi-movie-roll' },
     { title: 'Top IMDB', path: '/top-imdb', icon: 'mdi-movie-star' },
   ]

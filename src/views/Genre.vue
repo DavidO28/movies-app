@@ -1,3 +1,0 @@
-<template>
-    Genres page
-</template>

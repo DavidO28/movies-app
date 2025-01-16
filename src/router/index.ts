@@ -5,33 +5,6 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: () =>
-        import(/* webpackChunkName: "home page" */ '@/views/Home.vue'),
-      meta: {
-        title: 'Movies Home',
-      },
-    },
-    {
-      path: '/genre',
-      name: 'genre',
-      component: () =>
-        import(/* webpackChunkName: "genre page" */ '@/views/Genre.vue'),
-      meta: {
-        title: 'Genre',
-      },
-    },
-    {
-      path: '/country',
-      name: 'country',
-      component: () =>
-        import(/* webpackChunkName: "country page" */ '@/views/Country.vue'),
-      meta: {
-        title: 'Country',
-      },
-    },
-    {
-      path: '/movies',
       name: 'movies',
       component: () =>
         import(/* webpackChunkName: "movies page" */ '@/views/Movies.vue'),

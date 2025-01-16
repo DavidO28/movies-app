@@ -1,3 +1,0 @@
-<template>
-    Countries page
-</template>

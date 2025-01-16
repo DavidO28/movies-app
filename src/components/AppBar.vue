@@ -19,15 +19,15 @@
 
         {{ item.title }}
       </v-list-item>
-      <v-list-item>
-        <v-btn
-          class="ma-3"
-          :icon="
-            currentTheme === 'light' ? 'mdi-weather-night' : 'mdi-weather-sunny'
-          "
-          @click="toggleTheme"
-        />
-      </v-list-item>
+        <v-btn class="ma-4" @click="toggleTheme">
+          <v-icon>
+            {{
+              currentTheme === 'light'
+                ? 'mdi-weather-night'
+                : 'mdi-weather-sunny'
+            }}
+          </v-icon>
+        </v-btn>
     </v-list>
   </v-navigation-drawer>
 

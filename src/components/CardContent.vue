@@ -8,7 +8,7 @@
     }"
     class="content-container pa-3 py-10 d-flex flex-column justify-center text-center align-center rounded-xl"
   >
-    <div class="pa-3 video-container">
+    <div class="py-3 video-container">
       <Video
         :type="type"
         :id="id"
@@ -57,6 +57,7 @@
   }
 
   .text-container {
+    width: 100%;
     max-width: 1000px;
     background-color: rgba(0, 0, 0, 0.8);
   }

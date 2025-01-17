@@ -47,7 +47,7 @@
 
   const router = useRouter()
 
-  const currentSlide = ref(0)
+  const currentSlide = ref<number>(0)
 
   const { listData } = useFetch('https://api.themoviedb.org/3/movie/upcoming')
 

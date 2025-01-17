@@ -27,12 +27,4 @@
     max-width: 1000px;
     height: 70vh;
   }
-
-  iframe:focus {
-    outline: none;
-  }
-
-  iframe[seamless] {
-    display: block;
-  }
 </style>

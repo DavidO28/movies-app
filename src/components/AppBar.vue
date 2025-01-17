@@ -88,7 +88,7 @@
 
   const searchStore = useSearchStore()
 
-  const sidebar = ref(false)
+  const sidebar = ref<boolean>(false)
 
   const menuItems: MenuItem[] = [
     { title: 'Movies', path: '/', icon: 'mdi-video' },

@@ -12,7 +12,6 @@
         v-for="item in menuItems"
         :key="item.title"
         :to="item.path"
-        router
         @click="resetSearchQuery"
       >
         <v-icon>{{ item.icon }}</v-icon>

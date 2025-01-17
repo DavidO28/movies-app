@@ -64,6 +64,7 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
     transition: transform 0.3s ease;
   }
+
   .card-hover {
     position: absolute;
     background-color: black;

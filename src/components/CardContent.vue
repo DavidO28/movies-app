@@ -1,5 +1,6 @@
 <template>
   <LoadingStatus v-if="loading" />
+
   <div
     v-else-if="item"
     :style="{
@@ -13,18 +14,21 @@
         :id="id"
       />
     </div>
-    <div class="font-weight-bold text-container pa-3 rounded-xl">
+
+    <div class="font-weight-bold text-container pa-3 rounded-xl text-white">
       <h2 class="text-truncate">{{ item.title }}</h2>
       <h4>{{ item.release_date }}</h4>
       <h5>Rating: {{ item.vote_average }}</h5>
       <span>{{ item.overview }}</span>
     </div>
   </div>
+
   <div
     class="text-center"
     v-else
   >
-    Content isn't available
+    Content isn't available.
+    {{ error }}
   </div>
 </template>
 
@@ -39,10 +43,9 @@
   const type = route.params.type as string
   const id = route.params.id as string
 
-  const { item, loading } = useFetch(
+  const { item, loading, error } = useFetch(
     `https://api.themoviedb.org/3/${type}/${id}`,
   )
-  console.log(item)
 </script>
 
 <style scoped>
@@ -55,8 +58,7 @@
 
   .text-container {
     max-width: 1000px;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.8);
   }
 
   .video-container {

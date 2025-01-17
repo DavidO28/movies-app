@@ -3,7 +3,7 @@ import { ref, watch } from 'vue'
 import { useFetch } from '@/composables/useFetch'
 
 export const useSearchStore = defineStore('search', () => {
-  const searchQuery = ref('')
+  const searchQuery = ref<string>('')
   const { setUrl } = useFetch('')
 
   const performSearch = async () => {

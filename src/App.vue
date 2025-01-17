@@ -28,7 +28,6 @@
         <router-view v-else></router-view>
       </v-container>
     </v-main>
-    <footer>this is footer</footer>
   </v-app>
 </template>
 
@@ -45,9 +44,9 @@
   const searchStore = useSearchStore()
   const router = useRouter()
   const route = useRoute()
-
-  const currentTheme = ref('light')
   const theme = useTheme()
+
+  const currentTheme = ref<string>('light')
 
   const updateTheme = (newTheme: string) => {
     currentTheme.value = newTheme

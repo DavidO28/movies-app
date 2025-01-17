@@ -35,9 +35,9 @@
     listData: Movie[]
   }>()
 
-  const itemsPerPage = 12
+  const itemsPerPage: number = 12
 
-  const currentPage = ref(1)
+  const currentPage = ref<number>(1)
 
   const pageCount = computed(() => {
     return Math.ceil(props.listData.length / itemsPerPage)

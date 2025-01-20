@@ -13,7 +13,8 @@
       v-else
       class="no-poster"
     >
-      <v-icon size="xxx-large">mdi-image-off</v-icon>
+      <v-icon size="xxx-large">mdi-video-off</v-icon>
+      <span>Content isn't available</span>
     </div>
 
     <v-card-title class="movie-title">
@@ -45,6 +46,12 @@
   )
 
   const openContent = () => {
+    if (
+      !posterUrl.value ||
+      posterUrl.value === 'https://image.tmdb.org/t/p/w500undefined'
+    ) {
+      return
+    }
     router.push({
       name: 'content',
       params: {

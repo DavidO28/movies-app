@@ -8,6 +8,12 @@
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
     allowfullscreen
   ></iframe>
+  <span
+    v-else
+    class="font-weight-bold text-container pa-3 rounded-xl text-white"
+  >
+    Video isn't available
+  </span>
 </template>
 
 <script setup lang="ts">
@@ -26,5 +32,11 @@
     width: 100%;
     max-width: 1000px;
     height: 70vh;
+  }
+
+  .text-container {
+    width: 100%;
+    max-width: 1000px;
+    background-color: rgba(0, 0, 0, 0.8);
   }
 </style>

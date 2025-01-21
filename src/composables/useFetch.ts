@@ -8,14 +8,15 @@ export function useFetch(url: string | Ref<string>) {
   const loading = ref(false)
   const error = ref<string | null>(null)
   const reactiveUrl = ref(url)
+  const apiKey =
+    'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmMjdkMjVhMjc0MDA1OWY0MGFlMmZlMzE0NzI2ODMyMyIsIm5iZiI6MTczNTg5NzcyMy43NDgsInN1YiI6IjY3NzdiMjdiODE2YjI4MTBkMTY2ODgzMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.FLRkmRV9YMlOp7FLzoMVgG_ebEqKNbLHXocNhXNjJFw'
 
   const getData = async () => {
     loading.value = true
     try {
       const response = await fetch(reactiveUrl.value, {
         headers: {
-          Authorization:
-            'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmMjdkMjVhMjc0MDA1OWY0MGFlMmZlMzE0NzI2ODMyMyIsIm5iZiI6MTczNTg5NzcyMy43NDgsInN1YiI6IjY3NzdiMjdiODE2YjI4MTBkMTY2ODgzMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.FLRkmRV9YMlOp7FLzoMVgG_ebEqKNbLHXocNhXNjJFw',
+          Authorization: apiKey,
           Accept: 'application/json',
         },
       })
@@ -24,7 +25,7 @@ export function useFetch(url: string | Ref<string>) {
       }
       const data = await response.json()
       listData.value = data.results
-      item.value = data 
+      item.value = data
     } catch (err) {
       error.value =
         err instanceof Error ? err.message : 'An unknown error occurred'
